@@ -29,10 +29,12 @@ trait HasNamespace
      * @param string $name
      * @return $this
      */
-    public function namespace(string $name): static
+    public function namespace(?string $name): static
     {
+        $namespace = trim(app()->getNamespace(), '\\') . '\\' . str_replace(DIRECTORY_SEPARATOR, '\\', $name);
+
         return $this->rawNamespace(
-            trim(app()->getNamespace(), '\\') . '\\' . str_replace(DIRECTORY_SEPARATOR, '\\', $name)
+            rtrim($namespace, '\\')
         );
     }
 }
