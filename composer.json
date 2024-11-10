@@ -1,0 +1,9 @@
+{
+    "name": "ayup-creative/laravel-stub-maker",
+    "description": "Quickly and easily add the ability to output stubbed content from Artisan commands",
+    "autoload": {
+        "psr-4": {
+            "Ayup\\LaravelStubMaker\\": "src/"
+        }
+    }
+}
