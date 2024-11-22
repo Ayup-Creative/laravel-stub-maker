@@ -6,14 +6,18 @@ use Ayup\LaravelStubMaker\Stub;
 
 trait MakesStubs
 {
-    protected function stub(?string $objectName = null): Stub
+    protected function stub(?string $objectName = null, ?string $namespace = null): Stub
     {
         $stub = new Stub;
 
+        if(!is_null($namespace)) {
+            $stub->setNamespaceBase($namespace);
+        }
+
         if(!is_null($objectName)) {
-            [$namespace, $objectName] = $this->breakIntoNamespace($objectName);
+            [$ns, $objectName] = $this->breakIntoNamespace($objectName);
             $stub->className($objectName)
-                ->namespace($namespace);
+                ->namespace($ns);
         }
 
         return $stub;
